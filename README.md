@@ -1,5 +1,5 @@
-# hpm
-Holochain Package Manager for installing distributed apps that run on holochain
+# HCHC 
+The Holochain of Holochains - A distributed directory for finding and installing distributed apps that run on holochain
 
 
 Related link:
