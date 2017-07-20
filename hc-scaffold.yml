@@ -1,0 +1,247 @@
+{
+
+  "scaffoldVersion": "quick-start-0.0.1",
+
+  "Version": 1,
+
+
+  "UUID": "99338f86-861b-4cdc-8f0d-be019bb39154",
+
+
+  "Name": "HCHC_APP_DIRECTORY",
+
+  "Properties": {
+
+    # Application Description
+    # Briefly describe your holochain app.
+    "description": "Holochain Package Manager for installing distributed apps that run on holochain",
+
+    # Language
+    # The base (human) language of this holochain app.
+    "language": "en"
+  },
+
+  # Properties Schema File
+  # Describes the entries in the Properties section of your dna file.
+  "PropertiesSchemaFile": "properties_schema.json",
+
+  # DHT Settings
+  # Configure the properties of your Distributed Hash Table (e.g. hash algorithm, neighborhood size, etc.).
+  "DHTConfig": {
+    "HashType": "sha2-256"
+  },
+
+  # Zomes
+  # List the Zomes your application will support.
+  "Zomes": [
+    {
+
+      # Zome Name
+      # The name of this code module.
+      "Name": "hpm",
+
+      # Zome Description
+      # What is the purpose of this module?
+      "Description": "zome that implements a package directory ",
+
+      # Nucleus Type
+      # What scripting language will you code in?
+      "NucleusType": "js",
+
+      # Code File
+      # Points to the main script file for this Zome.
+      "CodeFile": "hpm.js",
+
+      # Zome Entries
+      # Data stored and tracked by your Zome.
+      "Entries": [
+        {
+          "Name": "dna", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "dna.json",
+          "_": "cr"
+        },
+        {
+          "Name": "Server", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "Server.json",
+          "_": "cr"
+        },
+        {
+          "Name": "IPFS", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "IPFS.json",
+          "_": "cr"
+        },
+        {
+          "Name": "dockerimages", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "dockerimages.json",
+          "_": "cr"
+        },
+        {
+          "Name": "admin", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "admin.json",
+          "_": "cr"
+        },
+        {
+          "Name": "admin_link", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "admin_link.json",
+          "_": "cr"
+        },
+        {
+          "Name": "bootstrap_link", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "bootstrap_link.json",
+          "_": "cr"
+        },
+        {
+          "Name": "index_link", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "index_link.json",
+          "_": "cr"
+        },
+        {
+          "Name": "gateway_link", # The name of this entry.
+          "DataFormat": "json", # What type of data should this entry store?
+          "Sharing": "public", # Should this entry be publicly accessible?
+          "SchemaFile": "gateway_link.json",
+          "_": "cr"
+        }
+      ],
+
+      # Zome Functions
+      # Functions which can be called in your Zome's API.
+      "Functions": [
+        {
+          "Name": "dnaCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:dna"
+        },
+        {
+          "Name": "dnaRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:dna"
+        },
+        {
+          "Name": "ServerCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:Server"
+        },
+        {
+          "Name": "ServerRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:Server"
+        },
+        {
+          "Name": "IPFSCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:IPFS"
+        },
+        {
+          "Name": "IPFSRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:IPFS"
+        },
+        {
+          "Name": "dockerimagesCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:dockerimages"
+        },
+        {
+          "Name": "dockerimagesRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:dockerimages"
+        },
+        {
+          "Name": "adminCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:admin"
+        },
+        {
+          "Name": "adminRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:admin"
+        },
+        {
+          "Name": "admin_linkCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:admin_link"
+        },
+        {
+          "Name": "admin_linkRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:admin_link"
+        },
+        {
+          "Name": "bootstrap_linkCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:bootstrap_link"
+        },
+        {
+          "Name": "bootstrap_linkRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:bootstrap_link"
+        },
+        {
+          "Name": "index_linkCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:index_link"
+        },
+        {
+          "Name": "index_linkRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:index_link"
+        },
+        {
+          "Name": "gateway_linkCreate", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "c:gateway_link"
+        },
+        {
+          "Name": "gateway_linkRead", # The name of this function.
+          "CallingType": "json", # Data format for parameters passed to this function.
+          "Exposure": "public", # Level to which is this function exposed.
+          "_": "r:gateway_link"
+        },
+        {
+          "Name": "getProperty", # The name of this function.
+          "CallingType": "string", # Data format for parameters passed to this function.
+          "Exposure": "", # Level to which is this function exposed.
+        },
+        {
+          "Name": "appProperty", # The name of this function.
+          "CallingType": "string", # Data format for parameters passed to this function.
+          "Exposure": "", # Level to which is this function exposed.
+        }
+      ]
+    }
+  ]
+}
