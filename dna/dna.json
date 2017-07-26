@@ -1,0 +1,209 @@
+{
+
+  "scaffoldVersion": "quick-start-0.0.1",
+
+  "Version": 1,
+
+
+  "UUID": "99338f86-861b-4cdc-8f0d-be019bb39154",
+
+
+  "Name": "HCHC_APP_DIRECTORY",
+
+  "Properties": {
+    "description": "Holochain Package Manager for installing distributed apps that run on holochain",
+    "language": "en"
+  },
+  "PropertiesSchemaFile": "properties_schema.json",
+
+  "DHTConfig": {
+    "HashType": "sha2-256"
+  },
+
+
+  "Zomes": [
+    {
+      "Name": "hpm",
+      "Description": "zome for package directory ",
+      "RibosomeType": "js",
+      "CodeFile": "hpm.js",
+
+
+
+      "Entries": [
+        {
+          "Name": "app_dna_entry",
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "app_dna_entry.json"
+        },
+        {
+          "Name": "dummy_app",
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "dummy_app.json"
+        },
+        {
+            "Name": "keyword",
+            "DataFormat": "string",
+            "Sharing": "public"
+        },
+
+        {
+          "Name": "Server",
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "Server.json"
+        },
+        {
+          "Name": "IPFS",
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "IPFS.json"
+        },
+        {
+          "Name": "dockerimages",
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "dockerimages.json"
+        },
+        {
+          "Name": "admin",
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "admin.json"
+        },
+        {
+          "Name": "app_links",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "keyword_links",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "directory_links",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "admin_link",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "bootstrap_link",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "index_link",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "gateway_link",
+          "DataFormat": "links"
+        }
+      ],
+
+      "Functions": [
+        {
+          "Name": "dnaCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "dnaRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "searchApp",
+          "CallingType": "string",
+          "Exposure": "public"
+        },
+        {
+          "Name": "putData",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "keywordExists",
+          "CallingType": "string",
+          "Exposure": "public"
+        }
+      ]
+    },
+    {
+        "Name": "anchor",
+        "Description": "Anchor zome",
+        "RibosomeType": "js",
+        "CodeFile": "anchor.js",
+        "Entries": [
+            {
+                "Name": "anchor",
+                "DataFormat": "json",
+                "SchemaFile": "anchor.json",
+                "Sharing": "public"
+            },  {
+                  "Name": "anchor_main",
+                  "DataFormat": "json",
+                  "SchemaFile": "anchor.json",
+                  "Sharing": "public"
+              },
+            {
+                "Name": "anchor_links",
+                "DataFormat": "links",
+                "Sharing": "public"
+            }
+        ],
+        "Functions": [
+            {
+                "Name": "AnchorTypeCreate",
+                "CallingType": "string",
+                "Exposure":"public"
+            },
+            {
+                "Name": "getMainAchorHash",
+                "CallingType": "string",
+                "Exposure":"public"
+            },
+            {
+                "Name": "getAnchorTypeHash",
+                "CallingType": "string",
+                "Exposure":"public"
+            },
+            {
+                "Name": "addAnchor",
+                "CallingType": "string",
+                "Exposure":"public"
+            },{
+                "Name": "anchor_type_create",
+                "CallingType": "string",
+                "Exposure":"public"
+            },{
+                "Name": "anchor_create",
+                "CallingType": "json",
+                "Exposure":"public"
+            },{
+                "Name": "anchor_link",
+                "CallingType": "string",
+                "Exposure":"public"
+            },{
+                "Name": "anchor_update",
+                "CallingType": "string",
+                "Exposure":"public"
+            },{
+                "Name": "anchor_updatelink",
+                "CallingType": "string",
+                "Exposure":"public"
+            },{
+                "Name": "anchor_type_list",
+                "CallingType": "string",
+                "Exposure":"public"
+            },{
+                "Name": "doGetLinkLoad",
+                "CallingType": "string",
+                "Exposure":"public"
+            }
+          ]
+      }
+  ]
+}

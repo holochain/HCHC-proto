@@ -1,0 +1,13 @@
+{
+    "title": "Dummy App Schema",
+    "type": "object",
+    "properties": {
+	"AppId": {
+	    "type": "string"
+	},
+	"Description": {
+	    "type": "string"
+	}
+    },
+    "required": ["type","value"]
+}

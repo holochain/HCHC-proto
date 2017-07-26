@@ -1,0 +1,22 @@
+[
+  {
+      "Convey":"We can retrieve Apps by the keyword",
+      "Zome":   "clutter",
+      "FnName": "getAppsByKeyword",
+      "Input":  "social media",
+      "Output": "[]",
+      "Exposure":"public",
+      "Err": "",
+      "Regexp": ""
+  },
+  {
+      "Convey":"We can retrieve Apps by the keyword",
+      "Zome":   "clutter",
+      "FnName": "getAppsByKeyword",
+      "Input":  "social media",
+      "Output": "[]",
+      "Exposure":"public",
+      "Err": "",
+      "Regexp": ""
+  }
+]

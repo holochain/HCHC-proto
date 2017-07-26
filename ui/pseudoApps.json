@@ -1,0 +1,20 @@
+array:=[
+    {
+        "Name":"Jhon",
+        "Surname":"Kenneth",
+        "mobile":329129293,
+        "email":"jhon@gmail.com"
+    },
+    {
+        "Name":"Thor",
+        "Surname":"zvalk",
+        "mobile":349229293,
+        "email":"thor@gmail.com"
+    },
+    {
+        "Name":"Mila",
+        "Surname":"Kvuls",
+        "mobile":329121293,
+        "email":"mila@gmail.com"
+    }
+]
