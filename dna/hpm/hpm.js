@@ -102,7 +102,8 @@ function putData(appdata)
 
   }
 
- //fetchData("t1");
+ fetchData("t1");
+ return "";
 
 }
 
@@ -124,6 +125,7 @@ function fetchData(keyword)
       }
       debug("All App DATA --> "+JSON.stringify(apps));
       //debug("App_dna_entry------->"+apps);
+      debug("type of"+typeof apps);
       return apps;
 }
 
