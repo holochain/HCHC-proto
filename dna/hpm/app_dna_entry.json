@@ -9,7 +9,7 @@
 	    "type": "string"
 	},
   "keywords": {
-	    "type": "string"
+	    "type": "object"
 	},
   "desc": {
 	    "type": "string"
