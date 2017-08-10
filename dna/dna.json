@@ -44,7 +44,17 @@
           "SchemaFile": "dummy_app.json"
         },
         {
+            "Name": "skeletonKey",
+            "DataFormat": "string",
+            "Sharing": "public"
+        },
+        {
             "Name": "keyword",
+            "DataFormat": "string",
+            "Sharing": "public"
+        },
+        {
+            "Name": "key",
             "DataFormat": "string",
             "Sharing": "public"
         },
@@ -74,11 +84,20 @@
           "SchemaFile": "admin.json"
         },
         {
+          "Name": "skeletonKey_link",
+          "DataFormat": "links"
+        },
+
+        {
           "Name": "app_links",
           "DataFormat": "links"
         },
         {
           "Name": "keyword_links",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "category_links",
           "DataFormat": "links"
         },
         {
@@ -104,16 +123,7 @@
       ],
 
       "Functions": [
-        {
-          "Name": "dnaCreate",
-          "CallingType": "json",
-          "Exposure": "public"
-        },
-        {
-          "Name": "dnaRead",
-          "CallingType": "json",
-          "Exposure": "public"
-        },
+
         {
           "Name": "searchApp",
           "CallingType": "string",
@@ -131,9 +141,20 @@
         },
         {
           "Name": "fetchData",
-          "CallingType": "string",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "fetchAllApps",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "fetchByCategory",
+          "CallingType": "json",
           "Exposure": "public"
         }
+
       ]
     },
     {
