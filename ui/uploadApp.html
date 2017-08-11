@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="hcUpload.js" charset="utf-8"></script>
+<script type="text/javascript" src="/hc.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<style media="screen">
+  .dropzone{
+    margin-left: 15px;
+    width: 850px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    line-height: 300px;
+    text-align: center;
+  }
+
+ .dragover{
+
+    border-color: #4293AD;
+    color: #4293AD;
+  }
+</style>
+</head>
+<body>
+
+</body>
+</html>
+<div class="container">
+  <div class="page-header">
+   <h1>Developer App Console</h1>
+ </div>
+<form method="get"  name="app-form" id="app-form" class="form-horizontal">
+  <div class="form-group">
+    <label for="appName" class="control-label col-sm-3">Enter application Name:</label>
+    <div class="col-sm-9">
+    <input type="text" class="form-control" id="appName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="desc" class="control-label col-sm-3">Briefly describe your App:</label>
+    <div class="col-sm-9">
+    <input type="text" class="form-control" id="desc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category" class="control-label col-sm-3">Select the Category:</label>
+    <div class="btn-group col-sm-9" id="category">
+      <button class="btn btn-default" id="tableAnchor">-- Category --</button>
+      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu" id="tableMenu">
+        <li><a href="#">category-1</a></li>
+        <li><a href="#">category-2</a></li>
+        <li><a href="#">category-3</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="dropzone" class="control-label col-sm-3">Upload files here:</label>
+    <div class="uploads">
+      <output id="list"></output>
+    </div>
+    <div class="dropzone col-sm-9" id="dropzone" ondrop="drag_drop(event)" ondragover="dragOver(event)" ondragleave="drag_leave(event)">Drop files here to upload</div>
+    <input type="file" id="fileInput" class="col-sm-9">
+    <p id="demo" class="col-sm-9"></p>
+  </div>
+
+  <div class="form-group">
+    <label for="keywords" class="control-label col-sm-3">Enter the keywords separated by comma:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="keywords">
+    </div>
+
+  </div>
+
+
+  <div class="page-footer">
+   <h1 style="visibility: hidden">footer</h1>
+ </div>
+ <div class="form-group">
+   <div class="col-sm-9 col-sm-offset-3">
+     <button type="submit" class="btn btn-primary" onclick="upload()">Upload</button>
+   </div>
+
+ </div>
+
+</form>
+</div>
