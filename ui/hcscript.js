@@ -17,6 +17,8 @@ $("#tableMenu a").click(function(e){
 });
 
 
+
+
 function listAppByCategory(selText)
 {
   var category=JSON.stringify(selText);
@@ -127,7 +129,7 @@ function makeAppHTML(appInfo)
  appDesc=appInfo.desc;
  appCategory=appInfo.category
 
- return '<div class="col-md-3" id="'+appID+'"><div class="media"><a href="#" class="thumbnail pull-left"><img src="images/smartBear.jpg" alt="App Logo" width="250px" height="150px"/></a><div class="media-body"><h5>'+appName+'</h5></div></div></div>'
+ return '<div class="col-md-3" id="'+appID+'"><div class="media"><a href="#" class="thumbnail pull-left"><img src="images/smartBear.jpg" class="center-block img-responsive"  alt="App Logo" width="250px" height="150px"/></a><div class="media-body"><h5>'+appName+'</h5></div></div></div>'
 
 }
 /* end of test*/
