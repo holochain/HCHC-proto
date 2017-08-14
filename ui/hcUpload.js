@@ -1,6 +1,6 @@
 
 
-
+var fileContent;
 $(document).ready(function(){
 $("#tableMenu a").click(function(e){
  e.preventDefault(); // cancel the link behaviour
@@ -13,7 +13,18 @@ $("#tableMenu a").click(function(e){
 
 });
 
+function getContent(){
+  var fr = new FileReader();
 
+  fr.onload=function(){
+    alert("Reading file..");
+  document.getElementById("fileContents").textContent=this.result;
+
+  }
+  var x=document.getElementById("fileInput").files[0];
+  fr.readAsText(x);
+
+}
 
 
 // working on upload file
@@ -52,11 +63,25 @@ function drag_drop(event) {
   var dropzone=document.getElementById('dropzone');
   dropzone.className='dropzone col-sm-9';
 
+  /**let's see if this works*/
   var files = event.dataTransfer.files;
-  document.getElementById('dropzone').innerHTML=files;
-  uploadFile(event.dataTransfer.files);
-  //handleFileSelect(event);
-  //alert(event.dataTransfer.files[0].name);
+  var fr = new FileReader();
+
+  fr.onload=function(e){
+    alert("Reading file..");
+  //document.getElementById("fileContents").textContent=this.result;
+  //document.getElementById("hiddenFileContents").value=atob(this.result);
+  fileContent=this.result;
+  //fileContent=e.target.result;
+  alert("fileContent"+JSON.stringify(e.target.result));
+
+  }
+  var x=files[0];
+  alert("readAsArrayBuffer");
+  fr.readAsArrayBuffer(x);
+  //fr.readAsText(x);
+
+
 
 }
 
@@ -67,7 +92,7 @@ function drag_leave(event) {
 
 }
 //  var formData= new FormData();
-function uploadFile(files){
+function uploadFile(files,contents){
   alert(JSON.stringify(files));
   // it is the responsibility of the user to upload a scaffold file
   //   then send the scaffold file to the server to be validateDel
@@ -84,38 +109,19 @@ function uploadFile(files){
         }
         if ('size' in file) {
             txt += "size: " + file.size + " bytes <br>";
+            txt +="contents: "+contents;
         }
+
+
   }
 
-//  return formData;
+  //  return formData;
   //alert("formData:="+JSON.stringify(formData));
 
 document.getElementById("demo").innerHTML = txt;
-
- document.getElementById("fileInput").value=files;
-
-
+document.getElementById("fileInput").value=files;
 }
 
-
-
-
-function handleFileSelect(evt) {
-    evt.stopPropagation();
-    evt.preventDefault();
-
-    var files = evt.dataTransfer.files; // FileList object.
-
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-    }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  }
 /* end of styling for drag and drop zone */
 
 
@@ -132,18 +138,21 @@ function upload()
   res=keywords.split(",");
   //category=objForm.elements["tableAnchor"].value;
   category=document.getElementById("tableAnchor").innerHTML;
-//  files=document.getElementById("fileInput").value;
+  //files=document.getElementById("hiddenFileContents").value;
+  alert("Type of file data:"+ typeof fileContent);
 
 
 
   var  appObj= {
     "appId":"app8",
     "appName":appName,
-    "keywords":res,
+    "desc":desc,
     "categories":category,
-  //  "files":files[i],
-    "desc":desc
+    "files":fileContent,
+    "keywords":res
   }
+  alert("checking upload() "+JSON.stringify(appObj));
+  console.log();("checking upload() "+JSON.stringify(appObj));
   //alert("displaying appOBJ"+JSON.stringify(appObj));
   appDB.push(appObj);
 alert("displaying appRepo"+JSON.stringify(appDB));

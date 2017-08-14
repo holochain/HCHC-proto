@@ -8,11 +8,17 @@
 	"appName": {
 	    "type": "string"
 	},
+  "desc": {
+      "type": "string"
+  },
+  "categories": {
+      "type": "string"
+  },
+  "files": {
+      "type": "string"
+  },
   "keywords": {
 	    "type": "array"
-	},
-  "desc": {
-	    "type": "string"
 	}
     },
     "required": ["appId","appName","keywords","desc"]

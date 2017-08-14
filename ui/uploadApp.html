@@ -25,6 +25,7 @@
     color: #4293AD;
   }
 </style>
+
 </head>
 <body>
 
@@ -64,12 +65,12 @@
 
   <div class="form-group">
     <label for="dropzone" class="control-label col-sm-3">Upload files here:</label>
-    <div class="uploads">
-      <output id="list"></output>
-    </div>
+
+    <!--  <pre  id="fileContents"></pre>-->
+      <input type="hidden" id="hiddenFileContents"/>
     <div class="dropzone col-sm-9" id="dropzone" ondrop="drag_drop(event)" ondragover="dragOver(event)" ondragleave="drag_leave(event)">Drop files here to upload</div>
-    <input type="file" id="fileInput" class="col-sm-9">
-    <p id="demo" class="col-sm-9"></p>
+  <!--  <input type="file" id="fileInput" class="col-sm-9" onchange="getContent()"/> -->
+
   </div>
 
   <div class="form-group">

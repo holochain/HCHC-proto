@@ -39,6 +39,8 @@ function listAppByCategory(selText)
      for(var i=0;i<apps.length;i++)
      {
          var appInfo=JSON.parse(apps[i].app_dna_entry);
+
+         // pass apps[i].app_dna_entry here
          createHTML(appInfo);
         //console.log("app Name"+appInfo.appName+":"+appInfo.desc);
      }
@@ -133,10 +135,17 @@ function makeAppHTML(appInfo)
 
 }
 /* end of test*/
+function download(){
+  alert("downloading..");
+}
+
 function createHTML(appInfo){
-//alert("createHTML");
-  var appElement= document.createElement('div');
+  //alert("inside createHTML");
+
+  //var appHash=makeHash(appInfo);
+  var appElement=document.createElement('div');
   appElement.class="col-md-4";
+  appElement.setAttribute('onclick','download()');
   //appElement.style.margin="5px 5px 10px 135px";
   var appH1= document.createElement('h4');
   appH1.innerText=appInfo.appName;

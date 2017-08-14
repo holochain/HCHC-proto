@@ -106,6 +106,7 @@ function genesis()
 function putData(appdata)
 {
   debug("inside putData")
+  //alert("inside PutData");
 
 
 //  for (var i=0;i<appdata.length;i++){
@@ -113,19 +114,25 @@ function putData(appdata)
 //}
   var pivot="skeletonKeyForAllApps";
   var skeletonKeyHash=commit("key",pivot);
+  /*** commiting  files to DHT ***/
+  //var directory = getDirectory();
+
+
+  /*** end of file commit ***/
   var w=commit("skeletonKey_link",{Links:[{Base:directory,Link:skeletonKeyHash,Tag:"key"}]});
 
   for (var i=0;i<appdata.length;i++)
   {
+  //  debug ("watchout !!!!!: here comes my App --"+appdata[i].appName);
     var appHash=commit("app_dna_entry",appdata[i]);
     var me=getMe();
-    var directory = getDirectory();
+    var directory=getDirectory();
     var x=commit("app_links",{Links:[{Base:skeletonKeyHash,Link:appHash,Tag:"app_dna_entry"}]});
     var category=appdata[i].categories;
 
     /*-------validating category ----------*/
     var checkCategory=keywordExists({Anchor_Type:"category",Anchor_Text:category});
-    debug("checkKey"+checkKey);
+
     if(checkCategory==="")
     {
       call("anchor","anchor_create",{Anchor_Type:"category",Anchor_Text:category});
