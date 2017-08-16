@@ -4,7 +4,7 @@ var fileContent;
 $(document).ready(function(){
 $("#tableMenu a").click(function(e){
  e.preventDefault(); // cancel the link behaviour
-  alert("category has been clicked");
+  //alert("category has been clicked");
 
   var selText = $(this).text();
    $("#tableAnchor").text(selText);
@@ -27,24 +27,7 @@ function getContent(){
 }
 
 
-// working on upload file
-/*
-(function(){
-  var dropzone=document.getElementById('dropzone');
-  dropzone.ondragover=function(){
-    this.ClassName='dropzone dragover'
-    return false;
-    }
 
-
-  dropzone.ondragleave=function(){
-    this.ClassName='dropzone';
-    return false;
-
-  }
-
-});
-*/
 
 
 /* styling for drag and drop zone */
@@ -73,13 +56,13 @@ function drag_drop(event) {
   //document.getElementById("hiddenFileContents").value=atob(this.result);
   fileContent=this.result;
   //fileContent=e.target.result;
-  alert("fileContent"+JSON.stringify(e.target.result));
+  //alert("fileContent"+JSON.stringify(fileContent));
 
   }
   var x=files[0];
-  alert("readAsArrayBuffer");
-  fr.readAsArrayBuffer(x);
-  //fr.readAsText(x);
+  //alert("readAsArrayBuffer");
+  //fr.readAsArrayBuffer(x);
+  fr.readAsText(x);
 
 
 
@@ -128,7 +111,7 @@ document.getElementById("fileInput").value=files;
 function upload()
 {
   var appDB=[];
-  alert("upload method");
+  //alert("upload method");
   var objForm,appName,desc,keywords,res,category,files;
   objForm=document.getElementById("app-form");
 
@@ -139,7 +122,7 @@ function upload()
   //category=objForm.elements["tableAnchor"].value;
   category=document.getElementById("tableAnchor").innerHTML;
   //files=document.getElementById("hiddenFileContents").value;
-  alert("Type of file data:"+ typeof fileContent);
+  //alert("Actual file content:"+  fileContent);
 
 
 
@@ -151,11 +134,11 @@ function upload()
     "files":fileContent,
     "keywords":res
   }
-  alert("checking upload() "+JSON.stringify(appObj));
+  //alert("checking upload() "+JSON.stringify(appObj));
   console.log();("checking upload() "+JSON.stringify(appObj));
   //alert("displaying appOBJ"+JSON.stringify(appObj));
   appDB.push(appObj);
-alert("displaying appRepo"+JSON.stringify(appDB));
+//alert("displaying appRepo"+JSON.stringify(appDB));
 var x=JSON.stringify(appDB);
 send("putData",x, function(data) {
     //console.log("printing data"+typeof JSON.parse(data));
@@ -166,7 +149,7 @@ send("putData",x, function(data) {
 
 
   });
-alert("send has been invoked");
+//alert("send has been invoked");
 
 // alert(appName+":"+desc+":"+res);
 }

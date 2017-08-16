@@ -48,7 +48,7 @@ function genesis()
   debug("Starting genesis from hpm")
 //  call("anchor","addAnchor","");
   call("anchor","anchor_type_create","category");
-  putData(appDB);// adding from genesis to test display of all apps on pageload()
+  //putData(appDB);// adding from genesis to test display of all apps on pageload()
   return true;
 
 }
@@ -114,6 +114,7 @@ function putData(appdata)
 //}
   var pivot="skeletonKeyForAllApps";
   var skeletonKeyHash=commit("key",pivot);
+  //var skeletonKeyHash=makeHash(pivot);
   /*** commiting  files to DHT ***/
   //var directory = getDirectory();
 
@@ -123,14 +124,16 @@ function putData(appdata)
 
   for (var i=0;i<appdata.length;i++)
   {
-  //  debug ("watchout !!!!!: here comes my App --"+appdata[i].appName);
+    debug("appdata[i].files : "+appdata[i].files);
     var appHash=commit("app_dna_entry",appdata[i]);
     var me=getMe();
     var directory=getDirectory();
     var x=commit("app_links",{Links:[{Base:skeletonKeyHash,Link:appHash,Tag:"app_dna_entry"}]});
+    /* creating file handle for each app*/
+    var fileHash=commit("file",appdata[i].files);
+    commit("file_links",{Links:[{Base:appHash,Link:fileHash,Tag:"file"}]});
+    /*-------Adding category for each app ----------*/
     var category=appdata[i].categories;
-
-    /*-------validating category ----------*/
     var checkCategory=keywordExists({Anchor_Type:"category",Anchor_Text:category});
 
     if(checkCategory==="")
@@ -174,16 +177,41 @@ function putData(appdata)
           }
 
    }
-
+   debug("passing"+appdata[i]+"to fetchFileByApp()");
+   //fetchFileByApp(appdata[i]);
 
   }
 
  //fetchData("t1");
  //fetchAllApps()
  //fetchByCategory({Anchor_Type:"category",Anchor_Text:"category-3"});
- //fetchByCategory("category-3");
+ //fetchByCategory("category-2");
+
  return "success";
 
+}
+
+function fetchFileByApp(app)
+{
+  debug("<--------fetching file by app---------->");
+    var files=[];
+    var appHash=makeHash(app);
+    debug("inside fetchFileByApp"+app);
+
+   //var appList=doGetLinkLoad(keywordHash,"app_dna_entry");
+   var fileList=doGetLinkLoad(appHash,"file");
+
+    debug("Length of fileList"+fileList.length)
+    for(var j=0;j<fileList.length;j++) {
+            var file = fileList[j]
+            //debug("applist "+appList[j].H)
+            files.push(file);
+
+
+      }
+      debug("All App DATA --> "+JSON.stringify(files));
+
+      return files;
 }
 
 function fetchByCategory(category)

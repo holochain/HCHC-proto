@@ -22,26 +22,26 @@ $("#tableMenu a").click(function(e){
 function listAppByCategory(selText)
 {
   var category=JSON.stringify(selText);
-  alert("Parameter passed:"+selText);
+  //alert("Parameter passed:"+selText);
 //  var searchString={Anchor_Type:"category",Anchor_Text:category};
   send("fetchByCategory",category, function(data) {
     console.log("printing data"+typeof JSON.parse(data));
 
      apps=JSON.parse(data);
-     alert("apps:"+data);
-     //error handling not working
+     //alert("apps:"+data);
      if(! apps[0]){
-       alert("no Results");
+      // alert("no Results");
        noResults();
 
    }else{
-     alert("Results found");
+     //alert("Results found");
      for(var i=0;i<apps.length;i++)
      {
          var appInfo=JSON.parse(apps[i].app_dna_entry);
 
          // pass apps[i].app_dna_entry here
-         createHTML(appInfo);
+         //-->createHTML(appInfo);
+         createHTML(apps[i].app_dna_entry);
         //console.log("app Name"+appInfo.appName+":"+appInfo.desc);
      }
 
@@ -135,17 +135,79 @@ function makeAppHTML(appInfo)
 
 }
 /* end of test*/
-function download(){
-  alert("downloading..");
+function download(appInfo){
+  //alert("downloading.."+appInfo);
+  var appObj=JSON.stringify(appInfo);
+  send("fetchFileByApp",appObj, function(data) {
+    //console.log("printing data"+typeof JSON.parse(data));
+
+     //files=JSON.parse(data);
+    files=JSON.stringify(data);
+    parsedFile=JSON.parse(data);
+    var y=parsedFile[0].file;
+    //alert("fetchFileByApp() was called succesfully and returns : "+y);
+
+    var newFile = new Blob([y],{type:"text/plain;charset=utf-8"});
+    saveAs(newFile,"AppInfo.txt");
+     //alert("Results found:"+files);
+
+
+
+
+
+  });
 }
 
-function createHTML(appInfo){
+
+function redirect(appInfo){
+  window.location = "appPage.html";
+  /*
+  // take appInfo from here and store it in session variable of the application page.
+  var cookieString="appInfo="+JSON.stringify(appInfo);
+  //alert("appInfo inside redirect(): "+appInfo);
+  //var cookieString="appInfo="+appInfo;
+  document.cookie=cookieString;
+  */
+
+  sessionStorage.setItem('key',JSON.stringify(appInfo));
+}
+
+function getCookie()
+{
+  var value=sessionStorage.getItem('key');
+  //alert("value"+value);
+  download(JSON.parse(value));
+
+
+  /*
+  alert("getCookie1: "+document.cookie);
+  var appInfo1=document.cookie.split("=");
+  appInfo2=appInfo1[0];
+  alert("getCookie2: "+appInfo2);
+  appInfo3=appInfo2.split(";");
+  var appInfo4=appInfo3[0];
+  alert("getCookie3: "+JSON.stringify(appInfo4));
+  //var appInfo2=document.cookie.split(";");
+  //alert("appInfo:"+appInfo2[0]);
+  var customObj=JSON.parse(appInfoArray[1]);
+  //alert("getCookie"+document.cookie);
+//  alert("checking one of the parameters of app Object:"+customObj.appId);
+*/
+}
+
+
+function createHTML(appInf){
   //alert("inside createHTML");
 
-  //var appHash=makeHash(appInfo);
+var appInfo=JSON.parse(appInf);
   var appElement=document.createElement('div');
   appElement.class="col-md-4";
-  appElement.setAttribute('onclick','download()');
+  //var x='redirect('+appInf+')';
+  //alert("x"+x);
+  // change this to  onclick - page redirect
+  //appElement.setAttribute('onclick','download('+appInf+')');
+  appElement.setAttribute('onclick','redirect('+appInf+')');
+
   //appElement.style.margin="5px 5px 10px 135px";
   var appH1= document.createElement('h4');
   appH1.innerText=appInfo.appName;

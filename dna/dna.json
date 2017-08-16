@@ -58,6 +58,11 @@
             "DataFormat": "string",
             "Sharing": "public"
         },
+        {
+            "Name": "file",
+            "DataFormat": "string",
+            "Sharing": "public"
+        },
 
         {
           "Name": "Server",
@@ -90,6 +95,10 @@
 
         {
           "Name": "app_links",
+          "DataFormat": "links"
+        },
+        {
+          "Name": "file_links",
           "DataFormat": "links"
         },
         {
@@ -131,6 +140,11 @@
         },
         {
           "Name": "putData",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "fetchFileByApp",
           "CallingType": "json",
           "Exposure": "public"
         },

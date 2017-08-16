@@ -8,9 +8,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="hcscript.js"></script>
+  <script type="text/javascript" src="FileSaver.js"></script>
   <script type="text/javascript" src="/hc.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
   <style>
+  body{
+    background-color: #ccc;
+  }
   div.row {
     background-color: white;
     overflow: auto;
@@ -37,13 +41,44 @@
   </style>
 </head>
 <body data-spy="scroll" onload="findAllApps()" >
-  <br />
-<div class="container">
-  <ul class="nav nav-pills navbar pull-right">
-    <li class=""><a href="#">Home</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#1">Home</a></li>
+          <li><a href="#2">About</a></li>
+          <li><a href="#3">Contact</a></li>
+          <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 <div class="jumbotron text-center">
   <h1>HCHC App Console</h1>
   <p>We are ready to host our apps!</p>
@@ -57,19 +92,19 @@
 </form>
   <p><a href="uploadApp.html">upload your Apps here!</a> </p>
 </div>
-</div>
+
 
 <div class="container" >
 <form>
   <div class="tuple">
     <div class="col-xs-12">
       <ul class="nav nav-pills nav-justified">
-        <li><a href="#"><span class="glyphicon glyphicon-star"></span><br>Featured</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span><br>Top Charts</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-tags"></span><br>Purchased</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-download-alt"></span><br>Updates</a></li>
+        <li><a href="#" style="color:#777"><span class="glyphicon glyphicon-star"></span><br>Featured</a></li>
+        <li><a href="#" style="color:#777"><span class="glyphicon glyphicon-bookmark"></span><br>Top Charts</a></li>
+        <li><a href="#" style="color:#777"><span class="glyphicon glyphicon-tags"></span><br>Purchased</a></li>
+        <li><a href="#" style="color:#777"><span class="glyphicon glyphicon-download-alt"></span><br>Updates</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" >
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="color:#777">
             <span class="glyphicon glyphicon-folder-open"></span><br><span id="tableAnchor">categories</span>
             <span class="caret"></span>
           </a>
@@ -101,8 +136,9 @@
 
 
 
-<h2 align="center">Best Apps in Life come free</h2>
+  <h2 align="center">Good things happen!</h2>
   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -119,7 +155,7 @@
         <h4>"More modications!!"<br><span>Maurice</span></h4>
       </div>
       <div class="item">
-        <h4>"Plus one"<br><span>Alex</span></h4>
+        <h4>"And more.."<br><span>Alex</span></h4>
       </div>
     </div>
 
