@@ -48,78 +48,22 @@ function genesis()
   debug("Starting genesis from hpm")
 //  call("anchor","addAnchor","");
   call("anchor","anchor_type_create","category");
-  //putData(appDB);// adding from genesis to test display of all apps on pageload()
+  putData(appDB);// adding from genesis to test display of all apps on pageload()
   return true;
 
 }
 
-/* this function is only testing out the category commit and the app commit */
-/*function putData(appdata)
-{
-  debug("inside putData");
-  var directory = getDirectory();
-  var pivot="skeletonKeyForAllApps";
-  var skeletonKeyHash=commit("key",pivot);
-  var w=commit("skeletonKey_link",{Links:[{Base:directory,Link:skeletonKeyHash,Tag:"key"}]});
-  debug("before for loop starts");
-  for (var i=0;i<appdata.length;i++)
-  {
-    debug("appdata:"+JSON.stringify(appdata[i]));
-    var appHash=commit("app_dna_entry",appdata[i]);
-    //var x=commit("app_links",{Links:[{Base:skeletonKeyHash,Link:appHash,Tag:"app_dna_entry"}]}); // linking all apps to same key
-    var category=appdata[i].categories;
-
-    var checkKey=keywordExists({Anchor_Type:"category",Anchor_Text:category});
-    debug("checkKey"+checkKey);
-    if(checkKey==="")
-    {
-      call("anchor","anchor_create",{Anchor_Type:"category",Anchor_Text:category});
-      debug("anchor for "+category+" created ");
-      var ctgry=makeHash({Anchor_Type:"category",Anchor_Text:category});
-      var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
-      debug("categoryLinks : "+categoryLinks);
-
-    }else{
-
-      var ctgry=makeHash({Anchor_Type:"category",Anchor_Text:category});
-      var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
-      debug("linking app to already existing category: "+categoryLinks)
-      debug(" linking  to category :"+appdata[i].categories)
-    }
-
-  //  var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
-  //  debug("categoryLinks : "+categoryLinks);
-
-
-
-
-
-  }
-
-  fetchByCategory({Anchor_Type:"category",Anchor_Text:"category-2"});
-  //return "success";
-
-}*/
-
-
-
+/* this function is a rewrite using holodex functions */
 function putData(appdata)
 {
   debug("inside putData")
-  //alert("inside PutData");
 
-
-//  for (var i=0;i<appdata.length;i++){
-//  debug("Keyword "+(i+1)+" :"+appdata[i].keywords[0]);
-//}
   var pivot="skeletonKeyForAllApps";
   var skeletonKeyHash=commit("key",pivot);
-  //var skeletonKeyHash=makeHash(pivot);
-  /*** commiting  files to DHT ***/
-  //var directory = getDirectory();
 
 
-  /*** end of file commit ***/
+
+
   var w=commit("skeletonKey_link",{Links:[{Base:directory,Link:skeletonKeyHash,Tag:"key"}]});
 
   for (var i=0;i<appdata.length;i++)
@@ -129,10 +73,12 @@ function putData(appdata)
     var me=getMe();
     var directory=getDirectory();
     var x=commit("app_links",{Links:[{Base:skeletonKeyHash,Link:appHash,Tag:"app_dna_entry"}]});
-    /* creating file handle for each app*/
+    /* creating file handle for each app***/
     var fileHash=commit("file",appdata[i].files);
     commit("file_links",{Links:[{Base:appHash,Link:fileHash,Tag:"file"}]});
-    /*-------Adding category for each app ----------*/
+    /* end of file commit */
+
+    /****-------Adding category for each app ----------****/
     var category=appdata[i].categories;
     var checkCategory=keywordExists({Anchor_Type:"category",Anchor_Text:category});
 
@@ -153,7 +99,7 @@ function putData(appdata)
     }
 
 
-      /*--check if keyword already exists.if yes, link to existing keyword, else create a new one--*/
+      /*--check if keyword already exists.if yes, link to existing keyword, else create a new one--**/
      for(var k=0;k<appdata[i].keywords.length;k++)
       {
 
@@ -190,6 +136,103 @@ function putData(appdata)
  return "success";
 
 }
+
+
+
+
+/*** start of putData() ***/
+/*
+function putData(appdata)
+{
+  debug("inside putData")
+  //alert("inside PutData");
+
+
+//  for (var i=0;i<appdata.length;i++){
+//  debug("Keyword "+(i+1)+" :"+appdata[i].keywords[0]);
+//}
+  var pivot="skeletonKeyForAllApps";
+  var skeletonKeyHash=commit("key",pivot);
+  //var skeletonKeyHash=makeHash(pivot);
+  /*** commiting  files to DHT ***/
+  //var directory = getDirectory();
+
+
+  /*** end of file commit ***------
+  var w=commit("skeletonKey_link",{Links:[{Base:directory,Link:skeletonKeyHash,Tag:"key"}]});
+
+  for (var i=0;i<appdata.length;i++)
+  {
+    debug("appdata[i].files : "+appdata[i].files);
+    var appHash=commit("app_dna_entry",appdata[i]);
+    var me=getMe();
+    var directory=getDirectory();
+    var x=commit("app_links",{Links:[{Base:skeletonKeyHash,Link:appHash,Tag:"app_dna_entry"}]});
+    /* creating file handle for each app***------
+    var fileHash=commit("file",appdata[i].files);
+    commit("file_links",{Links:[{Base:appHash,Link:fileHash,Tag:"file"}]});
+    /*-------Adding category for each app ----------****
+    var category=appdata[i].categories;
+    var checkCategory=keywordExists({Anchor_Type:"category",Anchor_Text:category});
+
+    if(checkCategory==="")
+    {
+      call("anchor","anchor_create",{Anchor_Type:"category",Anchor_Text:category});
+      debug("anchor for "+category+" created ");
+      var ctgry=makeHash({Anchor_Type:"category",Anchor_Text:category});
+      var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
+      debug("categoryLinks : "+categoryLinks);
+
+    }else{
+
+      var ctgry=makeHash({Anchor_Type:"category",Anchor_Text:category});
+      var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
+      debug("linking app to already existing category: "+categoryLinks)
+      debug(" linking  to category :"+appdata[i].categories)
+    }
+
+
+      /*--check if keyword already exists.if yes, link to existing keyword, else create a new one--**
+     for(var k=0;k<appdata[i].keywords.length;k++)
+      {
+
+          var checkKey=keywordExists(appdata[i].keywords[k]);
+          //debug("checkKey:"+checkKey)
+          if(checkKey==="")
+          {
+            //var directory = getDirectory();
+            var keywordHash=commit("keyword",appdata[i].keywords[k]);
+
+            var drlink= commit("directory_links",{Links:[{Base: directory,Link: keywordHash,Tag:"keyword"}]});
+            debug("able to commit directory_links"+drlink)
+            var keyapplink=commit("keyword_links",{Links:[{Base: keywordHash,Link: appHash ,Tag:"app_dna_entry"}]});
+            debug("able to link keyword to individual app:"+keyapplink)
+          }else{
+            //commit("keyword_links",{Links:[{Base: checkKey,Link: appHash ,Tag:"app_dna_entry"}]});
+            var keyHash=makeHash(appdata[i].keywords[k])
+            var x=commit("keyword_links",{Links:[{Base: keyHash,Link: appHash ,Tag:"app_dna_entry"}]});
+            debug("linking app to already existing keyword: "+x)
+            debug("keyword already exists:"+appdata[i].keywords[k])
+          }
+
+   }
+   debug("passing"+appdata[i]+"to fetchFileByApp()");
+   //fetchFileByApp(appdata[i]);
+
+  }
+
+ //fetchData("t1");
+ //fetchAllApps()
+ //fetchByCategory({Anchor_Type:"category",Anchor_Text:"category-3"});
+ //fetchByCategory("category-2");
+
+ return "success";
+
+}
+
+*/
+
+/***end of putData() ***/
 
 function fetchFileByApp(app)
 {

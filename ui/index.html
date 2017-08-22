@@ -4,13 +4,19 @@
   <title>HCHC</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Adding CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="hcscript.js"></script>
-  <script type="text/javascript" src="FileSaver.js"></script>
-  <script type="text/javascript" src="/hc.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <!--end of CDN-->
+
+
+ <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
+<!--<script type="text/javascript">
+window.$=window.jQuery=require("./js/bootstrap.js"&&"./js/bootstrap.min.js"&&"./js/npm.js");
+</script>-->
+<script src="../index.js"></script>
+
   <style>
   body{
     background-color: #ccc;
@@ -52,7 +58,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#"> HCHC <span class="glyphicon glyphicon-link"></span></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -67,11 +73,11 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Welcome</a></li>
+              <li><a href="#">Account</a></li>
+              <li><a href="#">Redeem</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><a href="#">Support</a></li>
             </ul>
           </li>
         </ul>
@@ -80,11 +86,11 @@
     </div><!-- /.container-fluid -->
   </nav>
 <div class="jumbotron text-center">
-  <h1>HCHC App Console</h1>
-  <p>We are ready to host our apps!</p>
+  <h2>Apps built on HCHC</h2>
+
   <form class="form-inline">
   <div class="input-group" style="width:350px margin:">
-  <input type="text" id="searchBar" class="form-control" placeholder="Search.." size="40" maxlength="25"  onmousedown=""  align="center">
+  <input type="text" id="searchBar" class="form-control" placeholder="Filter apps by name, description, keyword.." size="40" maxlength="25"  onmousedown=""  align="center">
   <div class="input-group-btn">
   <button type="button" class="btn btn-danger" onclick="searchApp()">&#128269;</button>
   </div>
@@ -176,4 +182,13 @@
 
 
 </body>
+
+<script>
+  window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.js')
+  window.send = require('./hc.js')
+</script>
+<script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="hcscript.js"></script>
+<script type="text/javascript" src="FileSaver.js"></script>
+
 </html>

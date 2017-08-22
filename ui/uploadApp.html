@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Adding CDN-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--end of CDN-->
+<link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
+<script src="../index.js"></script>
 <script src="hcUpload.js" charset="utf-8"></script>
-<script type="text/javascript" src="/hc.js"></script>
+<!--<script type="text/javascript" src="/hc.js"></script>-->
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<!--<script>
+window.$=window.jQuery=require("./js/bootstrap.js"&&"./js/bootstrap.min.js"&&"./js/npm.js");
+</script>-->
 <style media="screen">
 body{
   background-color: black;
+  color: #4AA8C7;
 }
   .dropzone{
     margin-left: 15px;
@@ -32,11 +41,10 @@ body{
 </head>
 <body>
 
-</body>
-</html>
+
 <div class="container">
   <div class="page-header">
-   <h1>Developer App Console</h1>
+   <h1>DEVELOPER DASHB<span class="glyphicon glyphicon-dashboard"></span>ARD</h1>
  </div>
 <form method="get"  name="app-form" id="app-form" class="form-horizontal">
   <div class="form-group">
@@ -53,7 +61,7 @@ body{
   </div>
 
   <div class="form-group">
-    <label for="category" class="control-label col-sm-3">Select the Category:</label>
+    <label for="category" class="control-label col-sm-3">Select Category:</label>
     <div class="btn-group col-sm-9" id="category">
       <button class="btn btn-default" id="tableAnchor">-- Category --</button>
       <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
@@ -63,6 +71,16 @@ body{
         <li><a href="#">category-3</a></li>
       </ul>
     </div>
+  </div>
+
+  <!--browse app folder and to run hcdev package-->
+  <div class="form-group">
+    <label for="file" class="col-sm-3">Choose a file:</label>
+    <div class="col-sm-9">
+      <input type="file" name="appFolder" id="file" value="" onchange="packageApp(__dirname)">
+      <input type="submit" name="" value="submit">
+    </div>
+
   </div>
 
 
@@ -90,10 +108,20 @@ body{
  </div>
  <div class="form-group">
    <div class="col-sm-9 col-sm-offset-3">
-     <button type="submit" class="btn btn-primary" onclick="upload()">Upload</button>
+     <button type="submit" class="btn btn-primary" onclick="upload()" ><a href="index.html">Upload</a></button>
    </div>
 
  </div>
 
 </form>
 </div>
+
+</body>
+<script>
+  window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.js')
+  window.send = require('./hc.js')
+</script>
+<script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="hcscript.js"></script>
+<script type="text/javascript" src="FileSaver.js"></script>
+</html>

@@ -1,4 +1,7 @@
+var send = require('./hc.js')
 
+/*  uncomment--var response = require('./hc.js')*/
+//console.log(response);
 
 // global variable to contain app related values so it can be debugged in console
 var apps;
@@ -24,17 +27,17 @@ function listAppByCategory(selText)
   var category=JSON.stringify(selText);
   //alert("Parameter passed:"+selText);
 //  var searchString={Anchor_Type:"category",Anchor_Text:category};
-  send("fetchByCategory",category, function(data) {
+send("fetchByCategory",category, function(data) {
     console.log("printing data"+typeof JSON.parse(data));
 
      apps=JSON.parse(data);
      //alert("apps:"+data);
      if(! apps[0]){
-      // alert("no Results");
+       alert("no Results");
        noResults();
 
    }else{
-     //alert("Results found");
+     alert("Results found");
      for(var i=0;i<apps.length;i++)
      {
          var appInfo=JSON.parse(apps[i].app_dna_entry);
@@ -55,7 +58,7 @@ function listAppByCategory(selText)
 function searchApp(){
   var searchInput= JSON.stringify( $('#searchBar').val());
 /* data in function(data) here is the value returned by fetchData */
-  send("fetchData",searchInput, function(data) {
+send("fetchData",searchInput, function(data) {
     console.log("printing data"+typeof JSON.parse(data));
 
      apps=JSON.parse(data);
@@ -89,12 +92,12 @@ function searchApp(){
 function findAllApps(){
   var searchInput= JSON.stringify( $('#searchBar').val());
 // data in function(data) here is the value returned by fetchData
-  send("fetchAllApps",searchInput, function(data) {
+send("fetchAllApps",searchInput, function(data) {
     console.log("printing data"+typeof JSON.parse(data));
 
      apps=JSON.parse(data);
      //alert("apps:"+data);
-     //error handling not working
+     //if no apps are uploaded
      if(! apps[0]){
        //alert("no Results");
        noResults();
@@ -131,7 +134,7 @@ function makeAppHTML(appInfo)
  appDesc=appInfo.desc;
  appCategory=appInfo.category
 
- return '<div class="col-md-3" id="'+appID+'"><div class="media"><a href="#" class="thumbnail pull-left"><img src="images/smartBear.jpg" class="center-block img-responsive"  alt="App Logo" width="250px" height="150px"/></a><div class="media-body"><h5>'+appName+'</h5></div></div></div>'
+ return '<div class="col-md-3" id="'+appID+'"><div class="media"><a href="#" class="thumbnail pull-left"><img src="images/smartBear.jpg" class="center-block img-responsive"  alt="App Logo" width="150px" height="50px"/></a><div class="media-body"><h5>'+appName+'</h5></div></div></div>'
 
 }
 /* end of test*/

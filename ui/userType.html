@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="hcUpload.js" charset="utf-8"></script>
+<script type="text/javascript" src="/hc.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<style media="screen">
+body{
+  background-color: #818181;
+}
+  .dropzone{
+    margin-left: 15px;
+    width: 850px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    line-height: 300px;
+    text-align: center;
+  }
+
+ .dragover{
+
+    border-color: #4293AD;
+    color: #4293AD;
+  }
+
+  body, html {
+    height: 100%;
+    margin: 0;
+}
+</style>
+
+</head>
+<body style="background-image:url(images/image2.jpg);height: 100%;background-position: center;background-repeat:no-repeat;background-size: cover;opacity: 0.8">
+
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary btn-sm pull-right" data-target="#loginModal" data-toggle="modal">Login</button>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">What type of user are you?</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="span6" style="border:1px solid black;width:250px;height:150px">
+                  <p>End User</p>
+                </div>
+
+                <div class="span6" style="border:1px solid black;width:250px;height:150px ">
+                  <p>Developer</p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <span style="float: left">&copy;App Services Management System</span><span><a href="">Privacy Policy</a> | <a href="">Terms of Service</a><span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "HCHC",
+  "description": "The Holochain of Holochains - A distributed directory for finding and installing distributed apps that run on holochain",
+  "main": "index.js",
+  "authors": [
+    "Tisha <tkanjila@gmu.edu>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Holochain/HCHC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}

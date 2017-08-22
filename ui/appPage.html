@@ -11,6 +11,9 @@
   <script type="text/javascript" src="FileSaver.js"></script>
   <script type="text/javascript" src="/hc.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+  window.$=window.jQuery=require("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js");
+  </script>
   <style>
   body{
 
@@ -125,7 +128,7 @@ function changeContent(){
 
   </div>
   <ul class="pager">
-   <li><a href="index.html">Back</a></li>
+   <li><a href="#" onclick="location.href('index.html');">Back</a></li>
  </ul>
  <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #ccc;">
    <div class="container" >

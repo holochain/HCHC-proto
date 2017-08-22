@@ -172,6 +172,48 @@
       ]
     },
     {
+        "Name": "holodex",
+        "Description": "Zome dealing with functions relating to node to node communication and selection for index nodes",
+        "RibosomeType": "js",
+        "CodeFile": "holodex.js",
+        "BridgeTo":"QmQjgvQQik1RhBEg1zpDY1PKRsdgm1YQhbZ7Ebj2drY7f4",
+        "Entries": [
+          {
+              "Name": "VolunteerNode",
+              "DataFormat": "string",
+              "Sharing": "public"
+          },
+          {
+              "Name": "volunteer_link",
+              "DataFormat": "links",
+              "Sharing": "public"
+          }
+        ],
+        "Functions": [
+          {
+            "Name": "selectIndexNode",
+            "CallingType": "string",
+            "Exposure": "public"
+          },
+          {
+            "Name": "indexObject",
+            "CallingType": "json",
+            "Exposure": "public"
+          },
+          {
+            "Name": "indexObjectForTest",
+            "CallingType": "json",
+            "Exposure": "public"
+          },
+          {
+            "Name": "searchContent",
+            "CallingType": "string",
+            "Exposure": "public"
+          }
+
+        ]
+      },
+    {
         "Name": "anchor",
         "Description": "Anchor zome",
         "RibosomeType": "js",

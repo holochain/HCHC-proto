@@ -63,6 +63,7 @@ function drag_drop(event) {
   //alert("readAsArrayBuffer");
   //fr.readAsArrayBuffer(x);
   fr.readAsText(x);
+  document.getElementById('dropzone').innerHTML=files[0].name;
 
 
 
@@ -149,7 +150,6 @@ send("putData",x, function(data) {
 
 
   });
-//alert("send has been invoked");
-
-// alert(appName+":"+desc+":"+res);
+  var url = "/index.html";
+  window.location(url);
 }
