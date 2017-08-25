@@ -1,18 +1,11 @@
 {
-  "name": "HCHC",
+  "name": "hchc",
   "version": "1.0.0",
   "description": "The Holochain of Holochains - A distributed directory for finding and installing distributed apps that run on holochain",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "bootstrap": "^3.3.7",
-    "electron": "^1.7.5",
-    "jquery": "^3.2.1"
-  },
-  "devDependencies": {},
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,11 +14,17 @@
     "type": "git",
     "url": "git+https://github.com/Holochain/HCHC.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Holochain/HCHC/issues"
   },
-  "homepage": "https://github.com/Holochain/HCHC#readme"
+  "homepage": "https://github.com/Holochain/HCHC#readme",
+  "devDependencies": {
+    "electron": "^1.7.5"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "electron-bootstrap": "^1.0.0"
+  }
 }

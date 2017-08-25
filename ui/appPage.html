@@ -4,12 +4,13 @@
   <title>HCHC</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+  <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
   <script src="hcscript.js"></script>
   <script type="text/javascript" src="FileSaver.js"></script>
-  <script type="text/javascript" src="/hc.js"></script>
+  <!--<script type="text/javascript" src="/hc.js"></script>-->
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
   <script>
   window.$=window.jQuery=require("https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js");
@@ -128,7 +129,7 @@ function changeContent(){
 
   </div>
   <ul class="pager">
-   <li><a href="#" onclick="location.href('index.html');">Back</a></li>
+   <li><a href="index.html">Back</a></li>
  </ul>
  <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #ccc;">
    <div class="container" >
@@ -137,4 +138,9 @@ function changeContent(){
  </nav>
 
 </body>
+
+<script>
+  window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.js')
+  window.send = require('./hc.js')
+</script>
 </html>

@@ -1,6 +1,30 @@
-
-
+const electron = require('electron')
+var exec = require('child_process').exec;
 var fileContent;
+//var send = require('./hc.js')
+
+function puts(error, stdout, stderr) {
+  //sys.puts(stdout);
+  result=stdout;
+  alert(result);
+  fileContent=JSON.stringify(result);
+
+//  parsedFile=JSON.parse(result);
+//  var y=parsedFile[0].file;
+ }
+
+function getDirectoryFromUser() {
+  var path = electron.remote.dialog.showOpenDialog({
+   properties: ['openDirectory']
+  });
+ alert("path: "+path);
+ var command=path+'/bin/hcdev package';
+ exec(command,puts);
+ //"+path.basename(path)+"
+ document.getElementById('dropzone').innerHTML="scaffold.yml";
+}
+
+
 $(document).ready(function(){
 $("#tableMenu a").click(function(e){
  e.preventDefault(); // cancel the link behaviour
@@ -125,7 +149,7 @@ function upload()
   //files=document.getElementById("hiddenFileContents").value;
   //alert("Actual file content:"+  fileContent);
 
-
+  alert("fileContent---->"+fileContent);
 
   var  appObj= {
     "appId":"app8",
@@ -152,4 +176,5 @@ send("putData",x, function(data) {
   });
   var url = "/index.html";
   window.location(url);
+  alert("reached here dude");
 }

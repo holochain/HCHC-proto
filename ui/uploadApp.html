@@ -4,13 +4,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--Adding CDN-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <!--end of CDN-->
 <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
-<script src="../index.js"></script>
-<script src="hcUpload.js" charset="utf-8"></script>
+
+<!--<script src="../index.js"></script>-->
 <!--<script type="text/javascript" src="/hc.js"></script>-->
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!--<script>
@@ -75,20 +76,21 @@ body{
 
   <!--browse app folder and to run hcdev package-->
   <div class="form-group">
-    <label for="file" class="col-sm-3">Choose a file:</label>
+    <label for="browse" class="control-label col-sm-3">Browse your App directory:</label>
     <div class="col-sm-9">
-      <input type="file" name="appFolder" id="file" value="" onchange="packageApp(__dirname)">
-      <input type="submit" name="" value="submit">
+      <!--<input type="file" name="appFolder" id="file" value="" webkitdirectory onchange="packageApp()">-->
+    <!--  <input type="submit" name="" value="submit" onclick="packageApp()">-->
+      <button type="button" id="browse" class="btn btn-default" onclick="getDirectoryFromUser()">Browse...</button>
     </div>
 
   </div>
 
 
   <div class="form-group">
-    <label for="dropzone" class="control-label col-sm-3">Upload files here:</label>
+    <label for="dropzone" class="control-label col-sm-3">or Drag and Drop your scaffold file here:</label>
 
     <!--  <pre  id="fileContents"></pre>-->
-      <input type="hidden" id="hiddenFileContents"/>
+    <input type="hidden" id="hiddenFileContents"/>
     <div class="dropzone col-sm-9" id="dropzone" ondrop="drag_drop(event)" ondragover="dragOver(event)" ondragleave="drag_leave(event)">Drop files here to upload</div>
   <!--  <input type="file" id="fileInput" class="col-sm-9" onchange="getContent()"/> -->
 
@@ -121,7 +123,16 @@ body{
   window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.js')
   window.send = require('./hc.js')
 </script>
-<script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="./plugins/jquery/jquery-3.2.1.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="./plugins/bootstrap/js/bootstrap.js"></script>-->
+
+<!--<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
+<!--<script src="../bower_components/jquery/dist/jquery.js"></script>-->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="../bower_components/bootstrap/dist/js/npm.js"></script>-->
+
 <script src="hcscript.js"></script>
+<script src="hcUpload.js" charset="utf-8"></script>
 <script type="text/javascript" src="FileSaver.js"></script>
 </html>
