@@ -1,15 +1,9 @@
 {
 
-  "scaffoldVersion": "quick-start-0.0.1",
-
   "Version": 1,
-
-
   "UUID": "99338f86-861b-4cdc-8f0d-be019bb39154",
-
-
-  "Name": "HCHC_APP_DIRECTORY",
-
+  "Name": "HCHC",
+  "RequiresVersion": 17,
   "Properties": {
     "description": "Holochain Package Manager for installing distributed apps that run on holochain",
     "language": "en"

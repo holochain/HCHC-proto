@@ -224,7 +224,7 @@ function fetchByCategory(category)
     debug("Category"+JSON.stringify(category));
     //var searchKey=keywordExists(keywordHash);
    var appList=doGetLinkLoad(categoryHash,"app_dna_entry");
-    //var appLists=getLink(categoryHash,"app_dna_entry",{Load:true});
+    //var appLists=getLinks(categoryHash,"app_dna_entry",{Load:true});
     debug("Length of applist"+appList.length)
 
     for(var j=0;j<appList.length;j++) {
@@ -270,7 +270,7 @@ function fetchData(keyword)
     debug("keyword"+keyword);
     //var searchKey=keywordExists(keywordHash);
    var appList=doGetLinkLoad(keywordHash,"app_dna_entry");
-    //var appLists=getLink(keywordHash,"app_dna_entry",{Load:true});
+    //var appLists=getLinks(keywordHash,"app_dna_entry",{Load:true});
     debug("Length of applist"+appList.length)
     for(var j=0;j<appList.length;j++) {
             var app = appList[j]
@@ -327,18 +327,16 @@ function isErr(result) {
 // helper function to do getLink call, handle the no-link error case, and copy the returned entry values into a nicer array
 function doGetLinkLoad(base, tag) {
     // get the tag from the base in the DHT
-    var links = getLink(base, tag,{Load:true});
+    var links = getLinks(base, tag,{Load:true});
     debug("Links Raw:"+JSON.stringify(links));
 
     if (isErr(links)) {
         links = [];
-    } else {
-        links = links.Links;
     }
     var links_filled = [];
     for (var i=0;i <links.length;i++) {
-        var link = {H:links[i].H};
-        link[tag] = links[i].E;
+        var link = {H:links[i].Hash};
+        link[tag] = links[i].Eentry;
         links_filled.push(link);
     }
     debug("Links Filled:"+JSON.stringify(links_filled));

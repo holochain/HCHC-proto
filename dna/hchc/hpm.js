@@ -36,7 +36,7 @@ function putData(appdata)
     // find if keyword exists in DHT
 
     debug("commit "+i+" :"+x);
-    
+
   }
 
 }
@@ -77,16 +77,14 @@ function isErr(result) {
 // helper function to do getLink call, handle the no-link error case, and copy the returned entry values into a nicer array
 function doGetLinkLoad(base, tag) {
     // get the tag from the base in the DHT
-    var links = getLink(base, tag,{Load:true});
+    var links = getLinks(base, tag,{Load:true});
     if (isErr(links)) {
         links = [];
-    } else {
-        links = links.Links;
     }
     var links_filled = [];
     for (var i=0;i <links.length;i++) {
-        var link = {H:links[i].H};
-        link[tag] = links[i].E;
+        var link = {H:links[i].Hash};
+        link[tag] = links[i].Entry;
         links_filled.push(link);
     }
     debug("Links Filled:"+JSON.stringify(links_filled));
