@@ -5,7 +5,6 @@
 [![Gitter](https://badges.gitter.im/metacurrency/holochain.svg)](https://gitter.im/metacurrency/holochain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
-**P2P twitter-clone built on holochain**
 **The Holochain of Holochains**
 A distributed directory for finding and installing distributed apps that run on holochain
 
