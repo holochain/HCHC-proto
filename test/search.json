@@ -1,48 +1,51 @@
-[
-  {
-      "Convey":"Saving application info into database",
-      "Zome":   "hpm",
-      "FnName": "putData",
-      "Input":
+{
+    "Tests":
+    [
         {
-            "appId":"app1",
-            "appName":"Travian",
-            "keywords":["t1","t2"],
-            "desc":"Just another game"
+            "Convey":"Saving application info into database",
+            "Zome":   "hpm",
+            "FnName": "putData",
+            "Input":
+            {
+                "appId":"app1",
+                "appName":"Travian",
+                "keywords":["t1","t2"],
+                "desc":"Just another game"
+            },
+            "Output": "success",
+            "Exposure":"public",
+            "Err": "",
+            "Regexp": ""
         },
-      "Output": "\"\"",
-      "Exposure":"public",
-      "Err": "",
-      "Regexp": ""
-  },
-  {
-      "Convey":"We can retrieve Apps by the keyword",
-      "Zome":   "hpm",
-      "FnName": "fetchData",
-      "Input":  "t1",
-      "Output": "[object Object],[object Object]",
-      "Exposure":"public",
-      "Err": "",
-      "Regexp": ""
-  },
-  {
-      "Convey":"We can retrieve Apps by the keyword",
-      "Zome":   "hpm",
-      "FnName": "keywordExists",
-      "Input":  "nonExistingKeyword",
-      "Output": "",
-      "Exposure":"public",
-      "Err": "",
-      "Regexp": ""
-  },
-  {
-      "Convey":"We can retrieve Apps by the keyword",
-      "Zome":   "hpm",
-      "FnName": "keywordExists",
-      "Input":  "t1",
-      "Output": "QmYLERNA9Tsfpw2N1PE7pvUzmh76xA5TtKmTXgFFnXDbuC",
-      "Exposure":"public",
-      "Err": "",
-      "Regexp": ""
-  }
-]
+        {
+            "Convey":"We can retrieve Apps by the keyword",
+            "Zome":   "hpm",
+            "FnName": "fetchData",
+            "Input":  "t1",
+            "Output": [],
+            "Exposure":"public",
+            "Err": "",
+            "Regexp": ""
+        },
+        {
+            "Convey":"We can retrieve Apps by the keyword",
+            "Zome":   "hpm",
+            "FnName": "keywordExists",
+            "Input":  "nonExistingKeyword",
+            "Output": "",
+            "Exposure":"public",
+            "Err": "",
+            "Regexp": ""
+        },
+        {
+            "Convey":"We can retrieve Apps by the keyword",
+            "Zome":   "hpm",
+            "FnName": "keywordExists",
+            "Input":  "t1",
+            "Output": "QmYLERNA9Tsfpw2N1PE7pvUzmh76xA5TtKmTXgFFnXDbuC",
+            "Exposure":"public",
+            "Err": "",
+            "Regexp": ""
+        }
+    ]
+}

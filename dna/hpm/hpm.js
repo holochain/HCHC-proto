@@ -140,13 +140,13 @@ function putData(appdata)
     {
       call("anchor","anchor_create",{Anchor_Type:"category",Anchor_Text:category});
       debug("anchor for "+category+" created ");
-      var ctgry=makeHash({Anchor_Type:"category",Anchor_Text:category});
+        var ctgry=makeHash("anchor",{Anchor_Type:"category",Anchor_Text:category});
       var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
       debug("categoryLinks : "+categoryLinks);
 
     }else{
 
-      var ctgry=makeHash({Anchor_Type:"category",Anchor_Text:category});
+        var ctgry=makeHash("anchor",{Anchor_Type:"category",Anchor_Text:category});
       var categoryLinks=commit("category_links",{Links:[{Base:ctgry ,Link: appHash ,Tag:"app_dna_entry"}]});
       debug("linking app to already existing category: "+categoryLinks)
       debug(" linking  to category :"+appdata[i].categories)
@@ -170,7 +170,7 @@ function putData(appdata)
             debug("able to link keyword to individual app:"+keyapplink)
           }else{
             //commit("keyword_links",{Links:[{Base: checkKey,Link: appHash ,Tag:"app_dna_entry"}]});
-            var keyHash=makeHash(appdata[i].keywords[k])
+              var keyHash=makeHash("keyword",appdata[i].keywords[k])
             var x=commit("keyword_links",{Links:[{Base: keyHash,Link: appHash ,Tag:"app_dna_entry"}]});
             debug("linking app to already existing keyword: "+x)
             debug("keyword already exists:"+appdata[i].keywords[k])
@@ -195,7 +195,7 @@ function fetchFileByApp(app)
 {
   debug("<--------fetching file by app---------->");
     var files=[];
-    var appHash=makeHash(app);
+    var appHash=makeHash("file",app);
     debug("inside fetchFileByApp"+app);
 
    //var appList=doGetLinkLoad(keywordHash,"app_dna_entry");
@@ -220,7 +220,7 @@ function fetchByCategory(category)
 
     // ----trial code ---//
     var apps=[];
-    var categoryHash=makeHash(obj);
+    var categoryHash=makeHash("anchor",obj);
     debug("Category"+JSON.stringify(category));
     //var searchKey=keywordExists(keywordHash);
    var appList=doGetLinkLoad(categoryHash,"app_dna_entry");
@@ -247,7 +247,7 @@ function fetchAllApps()
   debug("<--------fetching all apps ---------->");
   var apps=[];
   //var directory = getDirectory();
-  var skeletonKeyHash=makeHash("skeletonKeyForAllApps");
+    var skeletonKeyHash=makeHash("skeletonKey","skeletonKeyForAllApps");
   var appList=doGetLinkLoad(skeletonKeyHash,"app_dna_entry");
   debug("Length of applist"+appList.length)
   for(var j=0;j<appList.length;j++) {
@@ -266,7 +266,7 @@ function fetchData(keyword)
 {
   debug("<--------fetching data by keyword---------->");
     var apps=[];
-    var keywordHash=makeHash(keyword);
+    var keywordHash=makeHash("keyword",keyword);
     debug("keyword"+keyword);
     //var searchKey=keywordExists(keywordHash);
    var appList=doGetLinkLoad(keywordHash,"app_dna_entry");
@@ -298,7 +298,7 @@ function fetchData(keyword)
 function keywordExists(keyword) // borrowed from getAgent
 {
   debug(" matching hash against DHT for: "+keyword);
-  var keyHash=makeHash(keyword);
+    var keyHash=makeHash("keyword",keyword);
   //var tempHash=keywordHash;
   debug("keyHash: "+keyHash)
 
